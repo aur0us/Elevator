@@ -90,7 +90,8 @@ public class ElevetorExperiment {
 		System.out.println("Minimum: " + min);
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(new File("C:\\Users\\blued\\OneDrive - Sheffield Hallam University\\Desktop\\Java\\ADS\\Portfolio\\Project 4\\Elevator-master\\Data Sets\\data.csv")));
-			bw.write(min);
+			bw.write("test");
+			bw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
