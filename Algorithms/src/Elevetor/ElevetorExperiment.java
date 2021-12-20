@@ -29,6 +29,7 @@ public class ElevetorExperiment {
 		{
 			levelList.add(Integer.parseInt(SLevels[i]));
 		}
+		Collections.sort(levelList);
 		System.out.println("The elevator will go to these floors : "+levelList);
 		try {
 			FIFO(levelList);
