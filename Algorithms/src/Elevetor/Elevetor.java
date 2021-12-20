@@ -9,7 +9,7 @@ public class Elevetor {
 	
 	static int i=5;
 	static int levelRequest=0;
-	static LinkedList<Integer> levelList = new LinkedList<Integer>();
+	static ArrayList<Integer> levelList = new ArrayList<Integer>();
 	
 	public static void main(String[] args) throws InterruptedException {
 	
@@ -51,7 +51,7 @@ public class Elevetor {
 		
 			if(!levelList.isEmpty()) {
 				
-				int level = levelList.getFirst();
+				int level = levelList.get(0);
 				
 				long start = System.currentTimeMillis();
 				System.out.println("level request "+levelRequest);
@@ -73,7 +73,7 @@ public class Elevetor {
 					i--;
 				}
 					System.out.println("You have arrived level "+levelRequest);
-					levelList.removeFirst();
+					levelList.remove(0);
 					Thread.sleep(2000);
 				}	
 			}	

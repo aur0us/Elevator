@@ -3,7 +3,6 @@ package Elevetor;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 
 public class ElevetorExperiment {
 	
@@ -32,7 +31,7 @@ public class ElevetorExperiment {
 		Collections.sort(levelList);
 		System.out.println("The elevator will go to these floors : "+levelList);
 		try {
-			FIFO(levelList);
+			ASCENDING(levelList);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -42,8 +41,8 @@ public class ElevetorExperiment {
 	}
 	
 	
-	public static void FIFO (ArrayList<Integer> floors) throws InterruptedException {
-		
+	public static void ASCENDING(ArrayList<Integer> floors) throws InterruptedException {
+		double mean = 0;
 		System.out.println("The current floor is : "+currentLevel);
 		long timeStart = System.currentTimeMillis();
 		long previousTime = timeStart;
@@ -85,9 +84,17 @@ public class ElevetorExperiment {
 				min = calculation;
 			}
 		}
+		mean = time/floorTimes.size();
 		System.out.println("Duration : "+time+ " seconds");
-		System.out.println("Mean: " + time/floorTimes.size());
+		System.out.println("Mean: " + mean);
 		System.out.println("Minimum: " + min);
+		try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter(new File("C:\\Users\\blued\\OneDrive - Sheffield Hallam University\\Desktop\\Java\\ADS\\Portfolio\\Project 4\\Elevator-master\\Data Sets\\data.csv")));
+			bw.write(min);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 		//logic for this:
 		// if output exists, append it, if not create a new file
 		// surround it by try catch block
