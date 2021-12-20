@@ -7,13 +7,13 @@ import java.util.LinkedList;
 
 public class ElevetorExperiment {
 	
-	static int currentLevel = 5;
+	static int currentLevel = 0; // changed to 0 since we'll sort the list so it'll make sense to start from 0
 
 	public static void main(String[] args) {
 		String line;
 		String splitBy = ",";
 		String[] SLevels = {};
-		LinkedList<Integer> levelList = new LinkedList<Integer>();
+		ArrayList<Integer> levelList = new ArrayList<Integer>(); //changed to arraylist as they are faster to access items from. Source: https://stackoverflow.com/questions/322715/when-to-use-linkedlist-over-arraylist-in-java
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\blued\\OneDrive - Sheffield Hallam University\\Desktop\\Java\\ADS\\Portfolio\\Project 4\\Elevator-master\\Data Sets\\5.csv"));
 			while((line = br.readLine()) != null)
@@ -41,15 +41,14 @@ public class ElevetorExperiment {
 	}
 	
 	
-	public static void FIFO (LinkedList<Integer> floors) throws InterruptedException {
+	public static void FIFO (ArrayList<Integer> floors) throws InterruptedException {
 		
 		System.out.println("The current floor is : "+currentLevel);
 		long timeStart = System.currentTimeMillis();
 		long previousTime = timeStart;
 		ArrayList<Integer> floorTimes = new ArrayList<Integer>();
 		while(!floors.isEmpty()) {
-			int l = floors.getFirst();
-			
+			int l = floors.get(0);
 			while(l>currentLevel) {
 				String string = String.format("%s", currentLevel);
 				System.out.print(string);
@@ -69,7 +68,7 @@ public class ElevetorExperiment {
 			long totalTime = (floorTime - timeStart)/1000;
 			System.out.println("\nYou have arrived level "+currentLevel + " in: " + totalTime + " Seconds");
 			floorTimes.add((int) totalTime);
-			floors.removeFirst();
+			floors.remove(0);
 			Thread.sleep(2000);
 		}
 		
