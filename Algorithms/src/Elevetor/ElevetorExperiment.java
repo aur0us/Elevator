@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class ElevetorExperiment {
-	
-	static int currentLevel = 0; // changed to 0 since we'll sort the list so it'll make sense to start from 0
+	static int currentLevel = 0	; // changed to 0 since we'll sort the list so it'll make sense to start from 0
 
 	public static void main(String[] args) {
 		String line;
@@ -14,7 +13,7 @@ public class ElevetorExperiment {
 		String[] SLevels = {};
 		ArrayList<Integer> levelList = new ArrayList<Integer>(); //changed to arraylist as they are faster to access items from. Source: https://stackoverflow.com/questions/322715/when-to-use-linkedlist-over-arraylist-in-java
 		try {
-			BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\blued\\OneDrive - Sheffield Hallam University\\Desktop\\Java\\ADS\\Portfolio\\Project 4\\Elevator-master\\Data Sets\\5.csv"));
+			BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\blued\\OneDrive - Sheffield Hallam University\\Desktop\\Java\\ADS\\Portfolio\\Project 4\\Ali's Solution\\Data Sets\\50 samples\\50 (10).csv"));
 			while((line = br.readLine()) != null)
 			{
 				SLevels = line.split(splitBy);
@@ -45,7 +44,6 @@ public class ElevetorExperiment {
 		double mean = 0;
 		System.out.println("The current floor is : "+currentLevel);
 		long timeStart = System.currentTimeMillis();
-		long previousTime = timeStart;
 		ArrayList<Integer> floorTimes = new ArrayList<Integer>();
 		while(!floors.isEmpty()) {
 			int l = floors.get(0);
@@ -89,17 +87,13 @@ public class ElevetorExperiment {
 		System.out.println("Mean: " + mean);
 		System.out.println("Minimum: " + min);
 		try {
-			BufferedWriter bw = new BufferedWriter(new FileWriter(new File("C:\\Users\\blued\\OneDrive - Sheffield Hallam University\\Desktop\\Java\\ADS\\Portfolio\\Project 4\\Elevator-master\\Data Sets\\data.csv")));
-			bw.write("test");
+			BufferedWriter bw = new BufferedWriter(new FileWriter(new File("C:\\Users\\blued\\OneDrive - Sheffield Hallam University\\Desktop\\Java\\ADS\\Portfolio\\Project 4\\Ali's Solution\\Data Sets\\data.csv"),true));
+			bw.newLine();
+			bw.write(String.valueOf(mean) + ',' + String.valueOf(min) + ',' + String.valueOf(time) + ',' +String.valueOf(floorTimes.size()));
 			bw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		//logic for this:
-		// if output exists, append it, if not create a new file
-		// surround it by try catch block
-		// TODO bufferedWriter to write to csv
 	}
 
 }
